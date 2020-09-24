@@ -1,9 +1,10 @@
 const express = require('express')
 const eventController = require('../controllers/eventController')
 const router = express.Router()
+const isAuth = require('../middleware/is-auth')
 
 // create event
-router.post('/', eventController.CREATE_EVENT)
+router.post('/', isAuth, eventController.CREATE_EVENT)
 
 // get all events
 router.get('/', eventController.GET_ALL_EVENT)
@@ -12,9 +13,9 @@ router.get('/', eventController.GET_ALL_EVENT)
 router.get('/:id', eventController.GET_EVENT)
 
 // update event
-router.put('/:id', eventController.UPDATE_EVENT)
+router.put('/:id', isAuth, eventController.UPDATE_EVENT)
 
 // delete a single event
-router.delete('/:id', eventController.DELETE_EVENT)
+router.delete('/:id', isAuth, eventController.DELETE_EVENT)
 
 module.exports = router

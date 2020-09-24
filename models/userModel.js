@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        
     },
     email: {
         type: String,
@@ -20,6 +20,7 @@ const userSchema = new mongoose.Schema({
         
     created_at: {
         type: Date,
+        default: Date.now
     },
     events:    [{
             type: mongoose.Schema.Types.ObjectId,
